@@ -120,7 +120,7 @@ public class LocalPlayerActivity extends ActionBarActivity {
         setupControlsCallbacks();
         setupMiniController();
         setupCastListener();
-        // see what we need to play and were
+        // see what we need to play and where
         Bundle b = getIntent().getExtras();
         if (null != b) {
             mSelectedMedia = com.google.sample.castcompanionlibrary.utils.Utils
@@ -245,7 +245,7 @@ public class LocalPlayerActivity extends ActionBarActivity {
             stopControllersTimer();
             setCoverArtStatus(com.google.sample.castcompanionlibrary.utils.Utils.
                     getImageUrl(mSelectedMedia, 0));
-            updateControlersVisibility(true);
+            updateControllersVisibility(true);
         }
     }
 
@@ -363,7 +363,7 @@ public class LocalPlayerActivity extends ActionBarActivity {
     }
 
     // should be called from the main thread
-    private void updateControlersVisibility(boolean show) {
+    private void updateControllersVisibility(boolean show) {
         if (show) {
             getSupportActionBar().show();
             mControlers.setVisibility(View.VISIBLE);
@@ -437,7 +437,7 @@ public class LocalPlayerActivity extends ActionBarActivity {
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    updateControlersVisibility(false);
+                    updateControllersVisibility(false);
                     mControlersVisible = false;
                 }
             });
@@ -513,7 +513,7 @@ public class LocalPlayerActivity extends ActionBarActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (!mControlersVisible) {
-                    updateControlersVisibility(true);
+                    updateControllersVisibility(true);
                 }
                 startControllersTimer();
                 return false;
